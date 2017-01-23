@@ -32,5 +32,11 @@ module.exports = {
                 target: 'http://localhost:5000',
             }
         }
+    },
+    externals: {
+        'cheerio': 'window',
+        'react/addons': true, // important!!
+        'react/lib/ExecutionEnvironment': true,
+        'react/lib/ReactContext': true
     }
 };

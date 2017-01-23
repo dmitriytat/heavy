@@ -3,6 +3,7 @@ import autobind from 'autobind-decorator';
 
 export default class Field extends React.Component {
     static propTypes = {
+        id: React.PropTypes.string,
         label: React.PropTypes.string,
         value: React.PropTypes.string,
         onChange: React.PropTypes.func,
@@ -16,7 +17,7 @@ export default class Field extends React.Component {
 
     render () {
         return (
-            <div>
+            <div id={this.props.id}>
                 <label>{this.props.label}</label>
                 <br/>
                 <input
@@ -30,6 +31,6 @@ export default class Field extends React.Component {
 
     @autobind
     handleChange(event) {
-        this.props.onChange(event.currentTarget.value);
+        this.props.onChange(event.target.value);
     }
 }
