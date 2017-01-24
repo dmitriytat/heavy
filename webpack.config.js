@@ -1,18 +1,20 @@
+const webpack = require('webpack');
+
 module.exports = {
     entry: {
-        index: "./index.jsx",
+        index: './index.jsx',
     },
     output: {
         path: __dirname + '/dist',
         publicPath: '/dist',
-        filename: "[name].bundle.js",
-        chunkFilename: "[id].bundle.js",
+        filename: '[name].bundle.js',
+        chunkFilename: '[id].bundle.js',
     },
     module: {
         rules: [
             {
                 test: /\.jsx?$/,
-                loader: "babel-loader",
+                loader: 'babel-loader',
             },
             {
                 test: /\.css$/,
@@ -20,11 +22,11 @@ module.exports = {
             },
             {
                 test: /\.jpg$/,
-                loader: "file?name=[path][name].[ext]",
+                loader: 'file?name=[path][name].[ext]',
             }
         ],
     },
-    devtool: "eval",
+    devtool: 'eval',
     plugins: [],
     devServer: {
         proxy: {

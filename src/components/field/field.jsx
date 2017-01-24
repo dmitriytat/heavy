@@ -5,7 +5,10 @@ export default class Field extends React.Component {
     static propTypes = {
         id: React.PropTypes.string,
         label: React.PropTypes.string,
-        value: React.PropTypes.string,
+        value: React.PropTypes.oneOfType([
+            React.PropTypes.string,
+            React.PropTypes.number,
+        ]),
         onChange: React.PropTypes.func,
     }
 
