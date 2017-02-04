@@ -1,9 +1,8 @@
 import React from 'react';
 import autobind from 'autobind-decorator';
 
-const FORM_STYLE = {
-    marginBottom: '20px'
-}
+import './form.css';
+const cn = require('bem-cn')('form');
 
 export default class Form extends React.Component {
     static propTypes = {
@@ -19,7 +18,7 @@ export default class Form extends React.Component {
         return (
             <form
                 onSubmit={this.handleSubmit}
-                style={FORM_STYLE}
+                className={cn.mix(this.props.className)}
             >
                 {this.props.children}
             </form>

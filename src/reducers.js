@@ -1,24 +1,15 @@
-export default function root(state, action) {
+export default function reducer(state, action) {
     switch (action.type) {
-        case 'TIMEOUT':
-            return onTimeout(state, action);
-        case 'TIMEOUT_END':
-            return onTimeoutEnd(state, action);
+        case 'CHANGE_PAGE':
+            onChangePage(state, action);
         default:
             return state;
     }
 }
 
-function onTimeout(state, { message }) {
+function onChangePage(state, { page }) {
     return {
         ...state,
-        message,
-    }
-}
-
-function onTimeoutEnd(state, { message }) {
-    return {
-        ...state,
-        message,
+        page,
     }
 }

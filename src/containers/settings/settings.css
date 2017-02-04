@@ -1,0 +1,10 @@
+.settings {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+
+    &__space {
+        flex-grow: 1;
+        margin: auto;
+    }
+}

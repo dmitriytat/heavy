@@ -1,0 +1,23 @@
+.button {
+    box-sizing: border-box;
+    background-color: transparent;
+    color: #769aa5;
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    border: none;
+    border-bottom: 2px solid rgba(118, 154, 165, 0.4);
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+    min-height: 43px;
+
+    &:focus {
+        outline: none;
+        border-bottom-color: #aa5c5a;
+    }
+
+    &:active {
+        outline: none;
+        border-bottom-color: #5b68aa;
+    }
+}
