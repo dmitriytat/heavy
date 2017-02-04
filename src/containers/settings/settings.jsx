@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import autobind from 'autobind-decorator';
 import moment from 'moment';
 
-import * as actions from './actions.js';
-import * as commonActions from '../../actions.js';
+import * as actions from '../../actions.js';
 
 import Field from '../../components/field/field.jsx';
 import Button from '../../components/button/button.jsx';
@@ -14,16 +13,16 @@ import './settings.css';
 const cn = require('bem-cn')('settings');
 
 @connect(state => {
-    const perDay = state.settings.hours / state.settings.days || 0;
+    const perDay = state.hours / state.days || 0;
 
     var d = moment.duration(perDay, 'hours');
     var hours = Math.floor(d.asHours());
     var minutes = Math.floor(d.asMinutes()) - hours * 60;
 
     return {
-        name: state.settings.name,
-        hours: state.settings.hours,
-        days: state.settings.days,
+        name: state.name,
+        hours: state.hours,
+        days: state.days,
         perDay: {
             hours,
             minutes,
@@ -44,11 +43,13 @@ export default class Settings extends React.Component {
                 />
                 <Field
                     label="Hours"
+                    type="tel"
                     value={this.props.hours}
                     onChange={this.handleChangeTaskHours}
                 />
                 <Field
                     label="Days"
+                    type="tel"
                     value={this.props.days}
                     onChange={this.handleChangeTaskDays}
                 >
@@ -81,6 +82,6 @@ export default class Settings extends React.Component {
 
     @autobind
     handleGoOut() {
-        this.props.dispatch(commonActions.changePage('Main'));
+        this.props.dispatch(actions.changePage('Main'));
     }
 }

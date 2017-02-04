@@ -11,19 +11,26 @@ import createSagaMiddleware from 'redux-saga';
 
 import Application from './src/Aplication.jsx';
 
-import rootReducer from './src/root';
+import rootReducer from './src/reducers';
 import sagas from './src/sagas';
 
-const initialState = {
-    global: {
-        page: 'Settings',
+import {
+    saveToLocalStorage,
+    loadFromLocalStorage
+} from './src/utils/data';
+
+const initialState = Object.assign({
+        page: 'Main',
+
+        elapsed: 0,
+        worked: 0,
+
+        name: '#1 Task',
+        hours: 30,
+        days: 15,
     },
-    settings: {
-        name: '',
-        hours: '',
-        endDate: '',
-    }
-};
+    loadFromLocalStorage('heavy')
+);
 
 const sagaMiddleware = createSagaMiddleware();
 const logger = createLogger();

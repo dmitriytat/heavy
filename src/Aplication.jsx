@@ -10,19 +10,22 @@ import { connect } from 'react-redux';
 // import { saveToLocalStorage, loadFromLocalStorage } from './utils/data';
 
 import Settings from './containers/settings/settings.jsx';
+import Main from './containers/main/main.jsx';
 
 import './Application.css';
 
 const cn = require('bem-cn')('application');
 
 @connect(state => ({
-    page: state.global.page,
+    page: state.page,
 }))
 export default class Application extends React.Component {
     render() {
+        console.log(this.props.page)
         return (
             <div className={cn()}>
                 {this.props.page === 'Settings' && <Settings />}
+                {this.props.page === 'Main' && <Main />}
             </div>
         );
     }
