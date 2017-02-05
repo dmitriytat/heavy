@@ -1,0 +1,14 @@
+.newday {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+
+    &__space {
+        flex-grow: 1;
+        margin: auto;
+    }
+
+    &__title {
+        margin-bottom: 20px;
+    }
+}

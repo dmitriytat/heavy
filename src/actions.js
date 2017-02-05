@@ -24,3 +24,15 @@ export function changeSettings(settings) {
         settings,
     }
 }
+
+export function spreadOverAll() {
+    return {
+        type: 'SPREAD_OVER_ALL',
+    }
+}
+
+export function moveToday() {
+    return {
+        type: 'MOVE_TODAY',
+    }
+}

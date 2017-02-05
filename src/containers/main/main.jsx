@@ -13,39 +13,37 @@ import './main.css';
 const cn = require('bem-cn')('main');
 
 @connect(state => {
-    const today = (state.hours / state.days - state.worked) || 0 ;
+    var perDay = moment.duration(state.perDay, 'hours');
+    var perDayHours = Math.floor(perDay.asHours());
+    var perDayMinutes = Math.floor(perDay.asMinutes()) - perDayHours * 60;
 
-    var d = moment.duration(today, 'hours');
-    var todayHours = Math.floor(d.asHours());
-    var todayMinutes = Math.floor(d.asMinutes()) - todayHours * 60;
-
-    var worked = moment.duration(state.worked, 'hours');
-    var workedHours = Math.floor(worked.asHours());
-    var workedMinutes = Math.floor(worked.asMinutes()) - workedHours * 60;
+    var d = moment.duration(state.daysHours[0], 'hours');
+    var hours = Math.floor(d.asHours());
+    var minutes = Math.floor(d.asMinutes()) - hours * 60;
 
     return {
         name: state.name,
         elapsed: state.elapsed,
-        today: {
-            hours: todayHours,
-            minutes: todayMinutes,
+        perDay: {
+            hours: perDayHours,
+            minutes: perDayMinutes,
         },
-        worked: {
-            hours: workedHours,
-            minutes: workedMinutes,
+        today: {
+            hours: hours,
+            minutes: minutes,
         },
     }
 })
 export default class Main extends React.Component {
     render() {
         const today = this.formatTime(this.props.today);
-        const worked = this.formatTime(this.props.worked);
+        const perDay = this.formatTime(this.props.perDay);
 
         return (
             <Form className={cn()}>
                 {today &&
                 <div className={cn('title')}>
-                    {this.props.name}: {today} to work today. {worked && `Worked ${worked}.`}
+                    {this.props.name}: {today} to work today. ({perDay} per day)
                 </div>
                 }
                 <Field

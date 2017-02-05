@@ -13,9 +13,7 @@ import './settings.css';
 const cn = require('bem-cn')('settings');
 
 @connect(state => {
-    const perDay = state.hours / state.days || 0;
-
-    var d = moment.duration(perDay, 'hours');
+    var d = moment.duration(state.perDay, 'hours');
     var hours = Math.floor(d.asHours());
     var minutes = Math.floor(d.asMinutes()) - hours * 60;
 

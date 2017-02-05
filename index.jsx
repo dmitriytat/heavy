@@ -20,14 +20,18 @@ import {
 } from './src/utils/data';
 
 const initialState = Object.assign({
-        page: 'Main',
+        page: 'Settings',
 
         elapsed: 0,
-        worked: 0,
 
-        name: '#1 Task',
-        hours: 30,
-        days: 15,
+        name: '',
+        hours: 0,
+        days: 1,
+        perDay: 0,
+
+        oldDate: Date.now(),
+
+        daysHours: [],
     },
     loadFromLocalStorage('heavy')
 );
