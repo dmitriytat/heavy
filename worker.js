@@ -2,13 +2,10 @@ this.addEventListener('install', function(event) {
     event.waitUntil(
         caches.open('v1').then(function(cache) {
             return cache.addAll([
-                '/heavy/',
                 '/heavy/browserconfig.xml',
                 '/heavy/manifest.json',
                 '/heavy/index.html',
-                '/heavy/dist/',
                 '/heavy/dist/index.bundle.js',
-                '/heavy/pwa/',
                 '/heavy/pwa/android-icon-36x36.png',
                 '/heavy/pwa/android-icon-48x48.png',
                 '/heavy/pwa/android-icon-72x72.png',
